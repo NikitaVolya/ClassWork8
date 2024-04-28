@@ -1,14 +1,27 @@
 
 #include <iostream>
-#include "Pair.h"
+
+#include "Array.h"
+
+double sum(double pOption)
+{
+	return pOption;
+}
+
+template <class...Types>
+double sum(double first, Types...args)
+{
+	double result = first;
+	result += sum(args...);
+	return result;
+}
 
 int main()
 {
-	Pair<char, int> test('a', 15);
-	Pair<int, int> test2(2, 15);
+	Array<int> ar(5, 12, 5, 8);
 
-	test.print();
-	test2.print();
+	for (int i = 0; i < ar.getSize(); i++)
+		std::cout << ar[i] << ", ";
 
 	return 0;
 }
