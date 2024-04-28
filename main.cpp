@@ -16,17 +16,28 @@ double sum(double first, Types...args)
 	return result;
 }
 
+int getNumber(double first)
+{
+	return 1;
+}
+
+template <class...Types>
+int getNumber(double first, Types...args)
+{	
+	return 1 + getNumber(args...);
+}
+
+template <class...Types>
+double avg(Types...args)
+{
+	double s = sum(args...);
+	int number = getNumber(args...);
+	return s / number;
+}
+
 int main()
 {
-	MyArray<int> ar{1, 2, 3, 5, 8};
-	MyArray<int> other;
-
-	other = ar;
-
-	other[1] = 15;
-	other.append(2);
-
-	std::cout << ar << other << std::endl;
+	std::cout << avg(5, 5, 11);
 
 	return 0;
 }
