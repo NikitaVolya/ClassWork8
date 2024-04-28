@@ -18,10 +18,15 @@ double sum(double first, Types...args)
 
 int main()
 {
-	Array<int> ar(5, 12, 5, 8);
+	MyArray<int> ar{1, 2, 3, 5, 8};
+	MyArray<int> other;
 
-	for (int i = 0; i < ar.getSize(); i++)
-		std::cout << ar[i] << ", ";
+	other = ar;
+
+	other[1] = 15;
+	other.append(2);
+
+	std::cout << ar << other << std::endl;
 
 	return 0;
 }
